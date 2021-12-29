@@ -327,7 +327,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					B75A06172671E9D800BEAF77 = {
 						CreatedOnToolsVersion = 12.5;
@@ -594,6 +594,7 @@
 				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEVELOPMENT_ASSET_PATHS = "\"LinearMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = C5686NKYJ7;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LinearMouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -622,6 +623,7 @@
 				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEVELOPMENT_ASSET_PATHS = "\"LinearMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = C5686NKYJ7;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LinearMouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
