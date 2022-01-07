@@ -8,7 +8,7 @@
 import XCTest
 @testable import LinearMouse
 
-class MemoryLogger: RuntimeConsoleLogger {
+class MemoryLogger: Logger {
     struct Entry: Equatable {
         var logLevel: LogLevel
         var message: String
@@ -21,11 +21,11 @@ class MemoryLogger: RuntimeConsoleLogger {
     }
 }
 
-class RuntimeConsoleTests: XCTestCase {
+class ConsoleTests: XCTestCase {
     func testConsoleLog() throws {
         let context = JSContext()!
         let logger = MemoryLogger()
-        RuntimeConsole(logger: logger).registerToContext(context)
+        Console(logger: logger).registerToContext(context)
         context.evaluateScript("""
             console.log('foo','bar');
             console.info(42);

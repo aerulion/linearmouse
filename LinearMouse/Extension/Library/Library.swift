@@ -1,5 +1,5 @@
 //
-//  RuntimeLibrary.swift
+//  Library.swift
 //  LinearMouse
 //
 //  Created by Jiahao Lu on 2022/1/6.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol RuntimeLibrary {
+protocol Library {
     func registerToContext(_ context: JSContext)
 }

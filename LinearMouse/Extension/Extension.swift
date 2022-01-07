@@ -15,35 +15,36 @@ enum ExtensionError: Error {
 class Extension {
     private let name: String
     private var context: JSContext!
+    private var libraries: [Library] = []
 
     private let initializeTimeLimitInSeconds = 0.5
 
     init(name: String, script: String) throws {
         self.name = name
-        createContext()
-        withExecutionTimeLimit(seconds: initializeTimeLimitInSeconds) {
-            context.evaluateScript("'use strict';" + script)
+        initContext()
+        try run(withTimeLimitInSeconds: initializeTimeLimitInSeconds) {
+            context.evaluateScript("(function () { 'use strict'; " + script + " })();")
         }
-        try checkException()
     }
 
-    private func createContext() {
+    private func initContext() {
         context = JSContext()!
-        RuntimeCore().registerToContext(context)
+        libraries = [
+            Console(extensionName: self.name),
+            Core(),
+        ]
+        libraries.forEach({ $0.registerToContext(context) })
     }
 
     @discardableResult
-    private func withExecutionTimeLimit<T>(seconds: Double, eval: () -> T) -> T {
+    private func run<T>(withTimeLimitInSeconds: Double, eval: () -> T) throws -> T {
         let group = JSContextGetGroup(context.jsGlobalContextRef)
-        JSContextGroupSetExecutionTimeLimit(group, seconds, nil, nil)
+        JSContextGroupSetExecutionTimeLimit(group, withTimeLimitInSeconds, nil, nil)
         let result = eval()
         JSContextGroupClearExecutionTimeLimit(group)
-        return result
-    }
-
-    private func checkException() throws {
         if let ex = context.exception {
             throw ExtensionError.jsError(ex)
         }
+        return result
     }
 }

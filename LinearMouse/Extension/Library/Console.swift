@@ -1,5 +1,5 @@
 //
-//  ExtensionConsole.swift
+//  Console.swift
 //  LinearMouse
 //
 //  Created by Jiahao Lu on 2022/1/6.
@@ -8,7 +8,7 @@
 import Foundation
 import os.log
 
-@objc protocol RuntimeConsoleExport: JSExport {
+@objc protocol ConsoleExport: JSExport {
     func log()
     func info()
     func warn()
@@ -19,11 +19,11 @@ enum LogLevel {
     case log, info, warn, error
 }
 
-protocol RuntimeConsoleLogger {
+protocol Logger {
     func logger(logLevel: LogLevel, message: String)
 }
 
-fileprivate class DefaultLogger: RuntimeConsoleLogger {
+fileprivate class DefaultLogger: Logger {
     static let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "Extension")
 
     let extensionName: String
@@ -45,10 +45,10 @@ fileprivate class DefaultLogger: RuntimeConsoleLogger {
     }
 }
 
-@objc class RuntimeConsole: NSObject, RuntimeLibrary, RuntimeConsoleExport {
-    private let logger: RuntimeConsoleLogger
+@objc class Console: NSObject, Library, ConsoleExport {
+    private let logger: Logger
 
-    init(logger: RuntimeConsoleLogger) {
+    init(logger: Logger) {
         self.logger = logger
         super.init()
     }
