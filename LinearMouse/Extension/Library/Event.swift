@@ -76,35 +76,43 @@ private let eventTargetScript = """
 """
 
 class Event: Library {
-    var getInternalDataFunction: JSValue? = nil
+    private static let getInternalDataMap = NSMapTable<JSContext, JSValue>(keyOptions: .weakMemory, valueOptions: .weakMemory)
+
+    private var getInternalDataList: [JSValue] = []
 
     func registerToContext(_ context: JSContext) {
-        assert(getInternalDataFunction == nil)
         let privateMethods = context.evaluateScript(eventTargetScript)
         assert(context.exception == nil, String(describing: context.exception))
-        getInternalDataFunction = privateMethods!.forProperty("getInternalData")
+        let getInternalData = privateMethods!.forProperty("getInternalData")!
+        getInternalDataList.append(getInternalData)
+        Self.getInternalDataMap.setObject(getInternalData, forKey: context)
     }
 
-    private func getInternalData(event: JSValue) -> JSValue {
-        assert(getInternalDataFunction != nil)
-        return getInternalDataFunction!.call(withArguments: [event])
+    private static func getInternalData(context: JSContext, event: JSValue) -> JSValue {
+        let getInternalData = getInternalDataMap.object(forKey: context)
+        assert(getInternalData != nil)
+        return getInternalData!.call(withArguments: [event])
     }
 
-    func propagationStopped(event: JSValue) -> Bool {
-        let value = getInternalData(event: event).forProperty("stopPropagationFlag")!
+    static func propagationStopped(context: JSContext, event: JSValue) -> Bool {
+        let value = getInternalData(context: context, event: event).forProperty("stopPropagationFlag")!
         assert(value.isBoolean)
         return value.toBool()
     }
 
-    func immediatePropagationStopped(event: JSValue) -> Bool {
-        let value = getInternalData(event: event).forProperty("stopImmediatePropagationFlag")!
+    static func immediatePropagationStopped(context: JSContext, event: JSValue) -> Bool {
+        let value = getInternalData(context: context, event: event).forProperty("stopImmediatePropagationFlag")!
         assert(value.isBoolean)
         return value.toBool()
     }
 
-    func defaultPrevented(event: JSValue) -> Bool {
-        let value = getInternalData(event: event).forProperty("canceledFlag")!
+    static func defaultPrevented(context: JSContext, event: JSValue) -> Bool {
+        let value = getInternalData(context: context, event: event).forProperty("canceledFlag")!
         assert(value.isBoolean)
         return value.toBool()
+    }
+
+    static func numOfRegistrations() -> Int {
+        getInternalDataMap.count
     }
 }

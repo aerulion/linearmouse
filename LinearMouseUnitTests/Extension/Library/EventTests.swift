@@ -12,17 +12,16 @@ class EventTests: XCTestCase {
     func testEvent() throws {
         let context = JSContext()!
         Assert().registerToContext(context)
-        let eventLibrary = Event()
-        eventLibrary.registerToContext(context)
+        Event().registerToContext(context)
         let event = context.evaluateScript("""
             const event = new Event('mousedown');
             assert(event.type === 'mousedown', 'event.type should be "mousedown"');
             event;
         """)!
         XCTAssertNil(context.exception)
-        XCTAssertFalse(eventLibrary.propagationStopped(event: event))
-        XCTAssertFalse(eventLibrary.immediatePropagationStopped(event: event))
-        XCTAssertFalse(eventLibrary.defaultPrevented(event: event))
+        XCTAssertFalse(Event.propagationStopped(context: context, event: event))
+        XCTAssertFalse(Event.immediatePropagationStopped(context: context, event: event))
+        XCTAssertFalse(Event.defaultPrevented(context: context, event: event))
         context.evaluateScript("""
             event.stopPropagation();
             event.stopImmediatePropagation();
@@ -31,8 +30,16 @@ class EventTests: XCTestCase {
             assert(event.defaultPrevented === true, 'event.defaultPrevented should be true');
         """)
         XCTAssertNil(context.exception)
-        XCTAssertTrue(eventLibrary.propagationStopped(event: event))
-        XCTAssertTrue(eventLibrary.immediatePropagationStopped(event: event))
-        XCTAssertTrue(eventLibrary.defaultPrevented(event: event))
+        XCTAssertTrue(Event.propagationStopped(context: context, event: event))
+        XCTAssertTrue(Event.immediatePropagationStopped(context: context, event: event))
+        XCTAssertTrue(Event.defaultPrevented(context: context, event: event))
+
+        for _ in 0..<100 {
+            autoreleasepool {
+                let context = JSContext()!
+                Event().registerToContext(context)
+            }
+        }
+        XCTAssertLessThan(Event.numOfRegistrations(), 101)
     }
 }
