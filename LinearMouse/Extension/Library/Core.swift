@@ -8,7 +8,7 @@
 import Foundation
 
 class Core: Library {
-    func registerToContext(_ context: JSContext) {
+    func registerInContext(_ context: JSContext) {
         context.globalObject.defineProperty("__APP_VERSION__", descriptor: [
             JSPropertyDescriptorValueKey: LinearMouse.appVersion
         ])

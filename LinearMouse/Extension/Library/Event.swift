@@ -80,7 +80,7 @@ class Event: Library {
 
     private var getInternalDataList: [JSValue] = []
 
-    func registerToContext(_ context: JSContext) {
+    func registerInContext(_ context: JSContext) {
         let privateMethods = context.evaluateScript(eventTargetScript)
         assert(context.exception == nil, String(describing: context.exception))
         let getInternalData = privateMethods!.forProperty("getInternalData")!

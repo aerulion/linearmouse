@@ -30,7 +30,7 @@ private let assertScript = """
 """
 
 class Assert: Library {
-    func registerToContext(_ context: JSContext) {
+    func registerInContext(_ context: JSContext) {
         context.evaluateScript(assertScript)
         assert(context.exception == nil, String(describing: context.exception))
     }

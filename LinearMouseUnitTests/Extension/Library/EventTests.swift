@@ -11,8 +11,8 @@ import XCTest
 class EventTests: XCTestCase {
     func testEvent() throws {
         let context = JSContext()!
-        Assert().registerToContext(context)
-        Event().registerToContext(context)
+        Assert().registerInContext(context)
+        Event().registerInContext(context)
         let event = context.evaluateScript("""
             const event = new Event('mousedown');
             assert(event.type === 'mousedown', 'event.type should be "mousedown"');
@@ -37,7 +37,7 @@ class EventTests: XCTestCase {
         for _ in 0..<100 {
             autoreleasepool {
                 let context = JSContext()!
-                Event().registerToContext(context)
+                Event().registerInContext(context)
             }
         }
         XCTAssertLessThan(Event.numOfRegistrations(), 101)

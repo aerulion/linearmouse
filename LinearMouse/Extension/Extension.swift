@@ -33,7 +33,7 @@ class Extension {
             Console(extensionName: self.name),
             Core(),
         ]
-        libraries.forEach({ $0.registerToContext(context) })
+        libraries.forEach({ $0.registerInContext(context) })
     }
 
     @discardableResult

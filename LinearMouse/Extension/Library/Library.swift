@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Library {
-    func registerToContext(_ context: JSContext)
+    func registerInContext(_ context: JSContext)
 }

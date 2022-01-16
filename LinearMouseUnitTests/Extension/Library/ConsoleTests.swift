@@ -25,7 +25,7 @@ class ConsoleTests: XCTestCase {
     func testConsoleLog() throws {
         let context = JSContext()!
         let logger = MemoryLogger()
-        Console(logger: logger).registerToContext(context)
+        Console(logger: logger).registerInContext(context)
         context.evaluateScript("""
             console.log('foo','bar');
             console.info(42);

@@ -57,7 +57,7 @@ fileprivate class DefaultLogger: Logger {
         self.init(logger: DefaultLogger(extensionName: extensionName))
     }
 
-    func registerToContext(_ context: JSContext) {
+    func registerInContext(_ context: JSContext) {
         context.setObject(self, forKeyedSubscript: "console" as NSString)
     }
 

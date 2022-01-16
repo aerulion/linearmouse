@@ -12,7 +12,7 @@ import JavaScriptCore
 class CoreTests: XCTestCase {
     func testAppVersion() throws {
         let context = JSContext()!
-        Core().registerToContext(context)
+        Core().registerInContext(context)
         XCTAssertEqual(context.evaluateScript("__APP_VERSION__").toString(), LinearMouse.appVersion)
         context.evaluateScript("__APP_VERSION__ = '';")
         XCTAssertEqual(context.evaluateScript("__APP_VERSION__").toString(), LinearMouse.appVersion)
