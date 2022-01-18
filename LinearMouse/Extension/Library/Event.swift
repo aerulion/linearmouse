@@ -16,7 +16,13 @@ class Event: Library {
     func registerInContext(_ context: JSContext) {
         context.evaluateScript(eventTargetShimScript)
         assert(context.exception == nil, String(describing: context.exception))
-        context.evaluateScript("globalThis.EventTarget = EventTargetShim.EventTarget; globalThis.Event = EventTargetShim.Event; delete EventTargetShim;")
+        context.evaluateScript(#"""
+            Object.assign(globalThis, {
+                EventTarget: EventTargetShim.EventTarget,
+                Event: EventTargetShim.Event
+            });
+            delete EventTargetShim;
+        """#)
         assert(context.exception == nil, String(describing: context.exception))
     }
 }

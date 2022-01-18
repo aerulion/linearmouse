@@ -14,6 +14,7 @@ class EventTests: XCTestCase {
         Assert().registerInContext(context)
         Event().registerInContext(context)
         context.evaluateScript("""
+            assert(!('EventTargetShim' in globalThis));
             let fired;
             const target = new EventTarget();
             target.addEventListener('mousedown', (e) => {
