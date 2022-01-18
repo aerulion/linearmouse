@@ -13,33 +13,17 @@ class EventTests: XCTestCase {
         let context = JSContext()!
         Assert().registerInContext(context)
         Event().registerInContext(context)
-        let event = context.evaluateScript("""
-            const event = new Event('mousedown');
-            assert(event.type === 'mousedown', 'event.type should be "mousedown"');
-            event;
-        """)!
-        XCTAssertNil(context.exception)
-        XCTAssertFalse(Event.propagationStopped(context: context, event: event))
-        XCTAssertFalse(Event.immediatePropagationStopped(context: context, event: event))
-        XCTAssertFalse(Event.defaultPrevented(context: context, event: event))
         context.evaluateScript("""
-            event.stopPropagation();
-            event.stopImmediatePropagation();
-            assert(event.defaultPrevented === false, 'event.defaultPrevented should be false');
-            event.preventDefault();
-            assert(event.defaultPrevented === true, 'event.defaultPrevented should be true');
+            let fired;
+            const target = new EventTarget();
+            target.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                fired = true;
+            });
+            const event = new Event('mousedown', { cancelable: true });
+            assert(!target.dispatchEvent(event));
+            assert(fired);
         """)
         XCTAssertNil(context.exception)
-        XCTAssertTrue(Event.propagationStopped(context: context, event: event))
-        XCTAssertTrue(Event.immediatePropagationStopped(context: context, event: event))
-        XCTAssertTrue(Event.defaultPrevented(context: context, event: event))
-
-        for _ in 0..<100 {
-            autoreleasepool {
-                let context = JSContext()!
-                Event().registerInContext(context)
-            }
-        }
-        XCTAssertLessThan(Event.numOfRegistrations(), 101)
     }
 }
