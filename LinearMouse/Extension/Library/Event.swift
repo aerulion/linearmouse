@@ -53,7 +53,7 @@ class Event: Library {
                     }
                 };
 
-                globalThis.WheelEvent = class WheelEvent extends Event {
+                globalThis.WheelEvent = class WheelEvent extends MouseEvent {
                     constructor(type, eventInitDict = {}) {
                         super(type, eventInitDict);
 
