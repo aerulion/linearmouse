@@ -26,12 +26,12 @@ class ConsoleTests: XCTestCase {
         let context = JSContext()!
         let logger = MemoryLogger()
         Console(logger: logger).registerInContext(context)
-        context.evaluateScript("""
+        context.evaluateScript(#"""
             console.log('foo','bar');
             console.info(42);
             console.warn({ foo: 'bar' });
             console.error([2, 3, 5, 7]);
-        """)
+        """#)
         XCTAssertNil(context.exception)
         XCTAssertEqual(logger.data, [
             .init(logLevel: .log, message: "foo bar"),

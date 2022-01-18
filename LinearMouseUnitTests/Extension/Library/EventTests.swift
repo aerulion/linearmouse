@@ -13,7 +13,7 @@ class EventTests: XCTestCase {
         let context = JSContext()!
         Assert().registerInContext(context)
         Event().registerInContext(context)
-        context.evaluateScript("""
+        context.evaluateScript(#"""
             assert(!('EventTargetShim' in globalThis));
             let fired;
             const target = new EventTarget();
@@ -21,10 +21,17 @@ class EventTests: XCTestCase {
                 e.preventDefault();
                 fired = true;
             });
-            const event = new Event('mousedown', { cancelable: true });
-            assert(!target.dispatchEvent(event));
-            assert(fired);
-        """)
+            {
+                const event = new MouseEvent('mousedown', { cancelable: true });
+                assert(!target.dispatchEvent(event));
+                assert(fired);
+            }
+            {
+                const event = new WheelEvent('mousedown', { cancelable: true });
+                assert(!target.dispatchEvent(event));
+                assert(fired);
+            }
+        """#)
         XCTAssertNil(context.exception)
     }
 }

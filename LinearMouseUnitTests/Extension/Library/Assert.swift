@@ -8,7 +8,7 @@
 import Foundation
 @testable import LinearMouse
 
-private let assertScript = """
+private let assertScript = #"""
 (function () {
     'use strict';
 
@@ -27,7 +27,7 @@ private let assertScript = """
         throw new AssertionError(String(message));
     };
 })();
-"""
+"""#
 
 class Assert: Library {
     func registerInContext(_ context: JSContext) {

@@ -17,11 +17,59 @@ class Event: Library {
         context.evaluateScript(eventTargetShimScript)
         assert(context.exception == nil, String(describing: context.exception))
         context.evaluateScript(#"""
-            Object.assign(globalThis, {
-                EventTarget: EventTargetShim.EventTarget,
-                Event: EventTargetShim.Event
-            });
-            delete EventTargetShim;
+            (function () {
+                'use strict';
+
+                Object.assign(globalThis, {
+                    EventTarget: EventTargetShim.EventTarget,
+                    Event: EventTargetShim.Event
+                });
+                delete globalThis.EventTargetShim;
+            })();
+        """#)
+        assert(context.exception == nil, String(describing: context.exception))
+        context.evaluateScript(#"""
+            (function () {
+                'use strict';
+
+                globalThis.MouseEvent = class MouseEvent extends Event {
+                    constructor(type, eventInitDict = {}) {
+                        super(type, eventInitDict);
+
+                        const {
+                            screenX, screenY,
+                            ctrlKey, shiftKey, altKey, metaKey,
+                            button
+                        } = eventInitDict;
+                        Object.defineProperties(this, {
+                            screenX: { value: screenX | 0 },
+                            screenY: { value: screenY | 0 },
+                            ctrlKey: { value: !!ctrlKey },
+                            shiftKey: { value: !!shiftKey },
+                            altKey: { value: !!altKey },
+                            metaKey: { value: !!metaKey },
+                            button: { value: button | 0 }
+                        });
+                    }
+                };
+
+                globalThis.WheelEvent = class WheelEvent extends Event {
+                    constructor(type, eventInitDict = {}) {
+                        super(type, eventInitDict);
+
+                        const { deltaX, deltaY, deltaMode } = eventInitDict;
+                        Object.defineProperties(this, {
+                            deltaX: { value: Number(deltaX) || 0.0 },
+                            deltaY: { value: Number(deltaY) || 0.0 },
+                            deltaMode: { value: deltaMode | 0 }
+                        });
+                    }
+                };
+                Object.defineProperties(WheelEvent, {
+                    DOM_DELTA_PIXEL: { enumerable: true, value: 0x00 },
+                    DOM_DELTA_LINE: { enumerable: true, value: 0x01 },
+                });
+            })();
         """#)
         assert(context.exception == nil, String(describing: context.exception))
     }
