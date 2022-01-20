@@ -26,9 +26,6 @@
 		B77A16172674D88E00E99A5D /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77A16162674D88E00E99A5D /* PreferencesWindow.swift */; };
 		B77A161B2674EF0E00E99A5D /* HyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77A161A2674EF0E00E99A5D /* HyperLink.swift */; };
 		B77BA0F227480AA500E3BC5C /* EventTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77BA0F127480AA500E3BC5C /* EventTransformer.swift */; };
-		B7842925278D985600D207F0 /* AutoUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7842924278D985600D207F0 /* AutoUpdateManager.swift */; };
-		B7842927278D9BBC00D207F0 /* CheckForUpdatesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7842926278D9BBC00D207F0 /* CheckForUpdatesButton.swift */; };
-		B784292D278DB06600D207F0 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = B784292C278DB06600D207F0 /* Sparkle */; };
 		B78429092783084D00D207F0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78429082783084D00D207F0 /* Extension.swift */; };
 		B784290C2784305400D207F0 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B784290B2784305400D207F0 /* ExtensionTests.swift */; };
 		B78429102786093400D207F0 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = B784290F2786093400D207F0 /* Core.swift */; };
@@ -39,6 +36,9 @@
 		B784291C2788300C00D207F0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B784291B2788300C00D207F0 /* Event.swift */; };
 		B784291E2788912800D207F0 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B784291D2788912800D207F0 /* EventTests.swift */; };
 		B78429202788966900D207F0 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B784291F2788966900D207F0 /* Assert.swift */; };
+		B7842925278D985600D207F0 /* AutoUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7842924278D985600D207F0 /* AutoUpdateManager.swift */; };
+		B7842927278D9BBC00D207F0 /* CheckForUpdatesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7842926278D9BBC00D207F0 /* CheckForUpdatesButton.swift */; };
+		B784292D278DB06600D207F0 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = B784292C278DB06600D207F0 /* Sparkle */; };
 		B794BFE026BC0A73003B11EF /* TouchEvents.c in Sources */ = {isa = PBXBuildFile; fileRef = B794BFDC26BC0A73003B11EF /* TouchEvents.c */; };
 		B794BFE426BC0E5D003B11EF /* TouchSimulate.m in Sources */ = {isa = PBXBuildFile; fileRef = B794BFE326BC0E5D003B11EF /* TouchSimulate.m */; };
 		B7ADF97F2748991D0005B02D /* ReverseScrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ADF97E2748991D0005B02D /* ReverseScrolling.swift */; };
@@ -49,7 +49,6 @@
 		B7ADF98D2748E5010005B02D /* ScrollWheelEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ADF98C2748E5010005B02D /* ScrollWheelEventView.swift */; };
 		B7ADF98F2748E6400005B02D /* MouseEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ADF98E2748E6400005B02D /* MouseEventView.swift */; };
 		B7ADF99F274918540005B02D /* ReverseScrollingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ADF99E274918540005B02D /* ReverseScrollingTests.swift */; };
-		B7ADF9A427491AA30005B02D /* FakeMouseDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ADF9A327491AA30005B02D /* FakeMouseDetector.swift */; };
 		B7B1D08D26B2FD6C00F48176 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B1D08C26B2FD6C00F48176 /* AppStorage.swift */; };
 		B7B1D08F26B3EC4F00F48176 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B1D08E26B3EC4F00F48176 /* GeneralView.swift */; };
 		B7B1D09126B3ECC500F48176 /* ModifierKeysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B1D09026B3ECC500F48176 /* ModifierKeysView.swift */; };
@@ -94,8 +93,6 @@
 		B77A16162674D88E00E99A5D /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
 		B77A161A2674EF0E00E99A5D /* HyperLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperLink.swift; sourceTree = "<group>"; };
 		B77BA0F127480AA500E3BC5C /* EventTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTransformer.swift; sourceTree = "<group>"; };
-		B7842924278D985600D207F0 /* AutoUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoUpdateManager.swift; sourceTree = "<group>"; };
-		B7842926278D9BBC00D207F0 /* CheckForUpdatesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesButton.swift; sourceTree = "<group>"; };
 		B78429082783084D00D207F0 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		B784290B2784305400D207F0 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		B784290F2786093400D207F0 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
@@ -106,6 +103,8 @@
 		B784291B2788300C00D207F0 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		B784291D2788912800D207F0 /* EventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		B784291F2788966900D207F0 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
+		B7842924278D985600D207F0 /* AutoUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoUpdateManager.swift; sourceTree = "<group>"; };
+		B7842926278D9BBC00D207F0 /* CheckForUpdatesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesButton.swift; sourceTree = "<group>"; };
 		B794BFDC26BC0A73003B11EF /* TouchEvents.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TouchEvents.c; sourceTree = "<group>"; };
 		B794BFDD26BC0A73003B11EF /* TouchEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchEvents.h; sourceTree = "<group>"; };
 		B794BFDE26BC0A73003B11EF /* IOHIDEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOHIDEventData.h; sourceTree = "<group>"; };
@@ -122,7 +121,6 @@
 		B7ADF98E2748E6400005B02D /* MouseEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseEventView.swift; sourceTree = "<group>"; };
 		B7ADF9952748ED620005B02D /* LinearMouseUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinearMouseUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7ADF99E274918540005B02D /* ReverseScrollingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseScrollingTests.swift; sourceTree = "<group>"; };
-		B7ADF9A327491AA30005B02D /* FakeMouseDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMouseDetector.swift; sourceTree = "<group>"; };
 		B7B1D08C26B2FD6C00F48176 /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
 		B7B1D08E26B3EC4F00F48176 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
 		B7B1D09026B3ECC500F48176 /* ModifierKeysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierKeysView.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 		B7ADF9962748ED620005B02D /* LinearMouseUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				B7ADF9A127491A750005B02D /* MouseDetector */,
 				B7ADF9A02749187A0005B02D /* Event */,
 				B784290A2784303800D207F0 /* Extension */,
 			);
@@ -329,14 +326,6 @@
 				B754147F274E3CEF003CDAD0 /* ModifierActionsTests.swift */,
 			);
 			path = Event;
-			sourceTree = "<group>";
-		};
-		B7ADF9A127491A750005B02D /* MouseDetector */ = {
-			isa = PBXGroup;
-			children = (
-				B7ADF9A327491AA30005B02D /* FakeMouseDetector.swift */,
-			);
-			path = MouseDetector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -500,7 +489,6 @@
 				B784290C2784305400D207F0 /* ExtensionTests.swift in Sources */,
 				B784291E2788912800D207F0 /* EventTests.swift in Sources */,
 				B784291227860A3C00D207F0 /* CoreTests.swift in Sources */,
-				B7ADF9A427491AA30005B02D /* FakeMouseDetector.swift in Sources */,
 				B78429202788966900D207F0 /* Assert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
