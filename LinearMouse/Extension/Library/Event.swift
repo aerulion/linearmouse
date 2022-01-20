@@ -59,8 +59,8 @@ class Event: Library {
 
                         const { deltaX, deltaY, deltaMode } = eventInitDict;
                         Object.defineProperties(this, {
-                            deltaX: { value: Number(deltaX) || 0.0 },
-                            deltaY: { value: Number(deltaY) || 0.0 },
+                            deltaX: { value: Number(deltaX) || 0.0, writable: true },
+                            deltaY: { value: Number(deltaY) || 0.0, writable: true },
                             deltaMode: { value: deltaMode | 0 }
                         });
                     }
